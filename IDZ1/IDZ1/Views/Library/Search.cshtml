@@ -1,0 +1,31 @@
+﻿@{
+    var results = ViewBag.Results as List<string[]>;
+}
+
+<h1>Поиск книг</h1>
+
+<a href="/Library/Catalog">Каталог</a>
+<hr />
+
+<form method="get">
+    <input type="text" name="query" placeholder="Введите название или автора" />
+    <button type="submit">Искать</button>
+</form>
+
+@if (results != null && results.Count > 0)
+{
+    <h3>Результаты:</h3>
+    <ul>
+        @foreach (var b in results)
+        {
+            <li>
+                @b[1] — @b[2]
+                (<a href="/Library/Book?isbn=@b[0]">Открыть</a>)
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>Ничего не найдено.</p>
+}

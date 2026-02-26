@@ -1,0 +1,23 @@
+﻿@{
+    var book = ViewBag.Book as string[];
+    var error = ViewBag.Error as string;
+    var books = ViewBag.Books;
+}
+
+<h1>Информация о книге</h1>
+
+<a href="/Library/Catalog">Каталог</a> |
+<a href="/Library/Search">Поиск</a>
+<hr />
+
+@if (error != null)
+{
+    <p style="color:red">@error</p>
+}
+else if (book != null )
+{
+    <p><b>Название:</b> @book[1]</p>
+    <p><b>Автор:</b> @book[2]</p>
+    <p><b>Год:</b> @book[3]</p>
+    <p><b>ISBN:</b> @book[0]</p>
+}

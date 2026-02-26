@@ -1,0 +1,27 @@
+﻿@{
+    var books = ViewBag.DeletedBooks as List<string[]>;
+}
+
+<h1>Удалённые книги</h1>
+
+<a href="/Library/Catalog">← Назад в каталог</a>
+<hr />
+
+@if (books == null || books.Count == 0)
+{
+    <p>Удалённых книг нет.</p>
+}
+else
+{
+    <ul>
+        @foreach (var b in books)
+        {
+            <li>
+                <b>@b[1]</b> — @b[2] (@b[3]) <br />
+                ISBN: <code>@b[0]</code> <br />
+                <a href="/Library/Restore?isbn=@b[0]">Восстановить</a>
+            </li>
+            <hr />
+        }
+    </ul>
+}

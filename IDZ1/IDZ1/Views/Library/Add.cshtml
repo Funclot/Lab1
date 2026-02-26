@@ -1,0 +1,37 @@
+﻿@{
+    var error = ViewBag.Error as string;
+}
+
+<h1>Добавить книгу</h1>
+
+<a href="/Library/Catalog">← Назад в каталог</a>
+<hr />
+
+@if (!string.IsNullOrWhiteSpace(error))
+{
+    <p style="color:red"><b>@error</b></p>
+}
+
+<form method="post">
+    <p>
+        ISBN:<br />
+        <input name="isbn" />
+    </p>
+
+    <p>
+        Название:<br />
+        <input name="title" />
+    </p>
+
+    <p>
+        Автор:<br />
+        <input name="author" />
+    </p>
+
+    <p>
+        Год:<br />
+        <input name="year" />
+    </p>
+
+    <button type="submit">Добавить</button>
+</form>

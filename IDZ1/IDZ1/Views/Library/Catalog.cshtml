@@ -1,0 +1,30 @@
+﻿@{
+    var books = ViewBag.Books as List<string[]>;
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<a href="/Library/Add">Добавить</a> |
+<a href="/Library/Search">Поиск</a> |
+<a href="/Library/Deleted">Удалённые</a>
+<hr />  
+
+@if (books != null)
+{
+    <ul>
+        @foreach (var b in books)
+        {
+            <li>
+                <b>@b[1]</b> — @b[2] (@b[3]) <br />
+                ISBN: @b[0] <br />
+                <a href="/Library/Book?isbn=@b[0]">Открыть</a>
+                |
+                <a href="/Library/Delete?isbn=@b[0]" style="color:red"
+                   onclick="return confirm('Удалить книгу?')">
+                    Удалить
+                </a>
+            </li>
+            <hr />
+        }
+    </ul>
+}
