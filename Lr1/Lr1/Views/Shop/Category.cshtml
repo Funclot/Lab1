@@ -1,0 +1,88 @@
+﻿@{
+    ViewData["Title"] = $"Категория: {ViewBag.Category}";
+}
+<h1>Категория: @ViewBag.Category</h1>
+<div class="category-info">
+    <h3>Информация о категории:</h3>
+    <p><strong>Название категории:</strong> @ViewBag.Category</p>
+    <p><strong>Категория получена из URL:</strong> @Context.Request.Path</p>
+</div>
+<hr>
+<h3>Товары в категории:</h3>
+@if (ViewBag.Products != null)
+{
+    <ul class="product-list">
+        @foreach (var product in ViewBag.Products)
+        {
+            <li class="product-item">
+                <span>@product</span>
+                <button class="btn btn-sm btn-outline-primary"
+                        onclick="addToCart('@product')">
+                    В корзину
+                </button>
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p class="text-warning">В этой категории пока нет товаров.</p>
+}
+<hr>
+<div class="test-categories">
+    <h4>Протестируйте другие категории:</h4>
+    <div class="btn-group">
+        <a href="/store/category/electronics" class="btn @(ViewBag.Category ==
+                                              "electronics" ? "btn-primary" : "btn-outline-primary")">Электроника</a>
+        <a href="/store/category/books" class="btn @(ViewBag.Category == "books" ?
+                                        "btn-primary" : "btn-outline-secondary")">Книги</a>
+        <a href="/store/category/clothing" class="btn @(ViewBag.Category ==
+                                           "clothing" ? "btn-primary" : "btn-outline-success")">Одежда</a>
+        <a href="/shop/category/food" class="btn @(ViewBag.Category == "food" ?
+                                      "btn-primary" : "btn-outline-warning")">Еда (через shop)</a>
+    </div>
+</div>
+<hr>
+<a href="/store" class="btn btn-secondary">← Назад в магазин</a>
+<style>
+    .category-info {
+        background-color: #e7f1ff;
+        padding: 15px;
+        border-radius: 5px;
+        margin: 15px 0;
+    }
+
+    .product-list {
+        list-style-type: none;
+        padding-left: 0;
+    }
+
+    .product-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 15px;
+        margin-bottom: 8px;
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 4px;
+    }
+
+        .product-item:hover {
+            background-color: #e9ecef;
+        }
+
+    .test-categories {
+        margin: 20px 0;
+    }
+</style>
+<script>
+    function addToCart(productName) {
+    alert(`Товар "${productName}" добавлен в корзину!`);
+    // Визуальная обратная связь
+    event.target.textContent = '✓ Добавлено';
+    event.target.classList.remove('btn-outline-primary');
+    event.target.classList.add('btn-success');
+    event.target.disabled = true;
+    }
+</script>

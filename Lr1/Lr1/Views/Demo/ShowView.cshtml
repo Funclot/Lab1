@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewData["Title"] = ViewData["PageTitle"];
+}
+<h1>Добро пожаловать, @ViewBag.UserName!</h1>
+<p>Это представление связано с действием ShowView контроллера Demo.</p>
+<p>Текущее время: @DateTime.Now.ToString("HH:mm:ss")</p>
+<hr>
+<h2>Информация из ViewBag:</h2>
+<ul>
+    <li>Имя пользователя: @ViewBag.UserName</li>
+    <li>Дата регистрации: @ViewBag.RegistrationDate.ToString("dd.MM.yyyy")</li>
+</ul>
+<h2>Информация из ViewData:</h2>
+<ul>
+    <li>Заголовок страницы: @ViewData["PageTitle"]</li>
+    <li>Количество посещений: @ViewData["VisitCount"]</li>
+</ul>

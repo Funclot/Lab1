@@ -1,0 +1,73 @@
+﻿@{
+    ViewData["Title"] = "Магазин";
+}
+<h1>@ViewBag.StoreName</h1>
+<p>Добро пожаловать в наш магазин!</p>
+<div class="store-info">
+    <h3>Информация о магазине:</h3>
+    <ul>
+        <li><strong>Название:</strong> @ViewBag.StoreName</li>
+        <li><strong>Количество товаров:</strong> @ViewData["ProductsCount"]</li>
+        <li><strong>Дата:</strong> @DateTime.Now.ToString("dd.MM.yyyy")</li>
+    </ul>
+</div>
+<hr>
+<h3>Навигация по магазину:</h3>
+<div class="navigation-links">
+    <a href="/store/category/electronics" class="btn btn-primary">
+        Категория:
+        Электроника
+    </a>
+    <a href="/store/category/books" class="btn btn-secondary">Категория: Книги</a>
+    <a href="/shop/category/clothing" class="btn btn-success">
+        Категория: Одежда
+        (через shop)
+    </a>
+    <a href="/store/product/1/details" class="btn btn-info">Товар #1</a>
+    <a href="/store/product/42/details" class="btn btn-warning">Товар #42</a>
+</div>
+<hr>
+<h3>Тестирование разных URL:</h3>
+<div class="test-urls">
+    <ul>
+        <li><code>/store</code> - главная страница магазина</li>
+        <li><code>/shop</code> - альтернативный URL (тот же Index)</li>
+        <li><code>/store/category/electronics</code> - категория электроники</li>
+        <li><code>/shop/category/books</code> - категория книг через shop</li>
+        <li><code>/store/product/42/details</code> - детали товара 42</li>
+    </ul>
+</div>
+<style>
+    .store-info {
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 5px;
+        margin: 20px 0;
+    }
+
+    .navigation-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 20px 0;
+    }
+
+    .test-urls {
+        background-color: #e9ecef;
+        padding: 15px;
+        border-radius: 5px;
+        font-family: monospace;
+    }
+
+        .test-urls ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .test-urls li {
+            margin-bottom: 8px;
+            padding: 5px;
+            background-color: white;
+            border-radius: 3px;
+        }
+</style>

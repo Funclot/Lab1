@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Информация о пользователе";
+}
+
+<h1>Информация о пользователе</h1>
+
+<p><strong>Имя:</strong> @(ViewBag.Name ?? "Не указано")</p>
+<p><strong>Возраст:</strong> @(ViewBag.Age?.ToString() ?? "0") лет</p>
+<p>
+    <strong>Статус:</strong>
+    @if (ViewBag.IsAdult == true)
+    {
+        <span class="text-success">Совершеннолетний</span>
+    }
+    else
+    {
+        <span class="text-warning">Несовершеннолетний</span>
+    }
+</p>
+<p><strong>Год рождения:</strong> @(ViewData["BirthYear"]?.ToString() ?? DateTime.Now.Year.ToString())</p>
+<p><strong>Текущий год:</strong> @(ViewData["CurrentYear"]?.ToString() ?? DateTime.Now.Year.ToString())</p>
+
+<hr>
+<h3>Протестируйте разные варианты:</h3>
+<ul>
+    <li><a href="/Demo/UserInfo?name=Мария&age=22">Мария, 22 года</a></li>
+    <li><a href="/Demo/UserInfo?name=Петя&age=16">Петя, 16 лет</a></li>
+    <li><a href="/Demo/UserInfo">Без параметров</a></li>
+</ul>
